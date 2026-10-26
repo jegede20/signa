@@ -1,13 +1,13 @@
 <svg viewBox="0 0 212 212" role="img" aria-label="Siggy the Signa mascot, encouraging" xmlns="http://www.w3.org/2000/svg">
-  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="#0D9488"/>
-  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="#0D9488"/>
-  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="#0D9488"/>
-  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="#0D9488"/>
-  <rect x="20" y="96" width="20" height="52" rx="10" fill="#0D9488" transform="rotate(-18 30 122)"/>
-  <rect x="52" y="62" width="108" height="108" rx="36" fill="#0D9488"/>
-  <g transform="translate(0 2)"><circle cx="76" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/><circle cx="136" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/>
+  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="#58CC02"/>
+  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="#58CC02"/>
+  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="#58CC02"/>
+  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="#58CC02"/>
+  <rect x="20" y="96" width="20" height="52" rx="10" fill="#58CC02" transform="rotate(-18 30 122)"/>
+  <rect x="52" y="62" width="108" height="108" rx="36" fill="#58CC02"/>
+  <g transform="translate(0 2)"><circle cx="76" cy="128" r="8" fill="#FF8FAB" fill-opacity="0.65"/><circle cx="136" cy="128" r="8" fill="#FF8FAB" fill-opacity="0.65"/>
         <circle cx="88" cy="108" r="9" fill="#fff"/><circle cx="124" cy="108" r="9" fill="#fff"/>
-        <circle cx="88" cy="109" r="4.2" fill="#0B2420"/><circle cx="124" cy="109" r="4.2" fill="#0B2420"/>
+        <circle cx="88" cy="109" r="4.2" fill="#24333B"/><circle cx="124" cy="109" r="4.2" fill="#24333B"/>
         <path d="M 92 132 Q 106 144 120 132" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/></g>
-  <rect x="80" y="172" width="52" height="20" rx="10" fill="#F59E0B"/>
+  <rect x="80" y="172" width="52" height="20" rx="10" fill="#FF9600"/>
 </svg>

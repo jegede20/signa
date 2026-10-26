@@ -24,12 +24,12 @@ export function clearCanvas(canvas) {
   if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-export function drawSkeleton(canvas, landmarks, { color = "#F59E0B", good = false } = {}) {
+export function drawSkeleton(canvas, landmarks, { color = "#FF9600", good = false } = {}) {
   const ctx = canvas.getContext("2d");
   if (!ctx || !landmarks) return;
   const { width: w, height: h } = canvas;
   ctx.clearRect(0, 0, w, h);
-  const line = good ? "#2DD4BF" : color;
+  const line = good ? "#58CC02" : color;
 
   ctx.lineWidth = Math.max(2, w / 220);
   ctx.strokeStyle = line;

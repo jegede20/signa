@@ -1,17 +1,17 @@
 /* ============================================================
    SIGNA — avatar/siggy.js
-   Siggy the mascot: a flat lagoon-teal hand character with 5
+   Siggy the mascot: a flat Feather-green hand character with 5
    expressions driven by the live practice score.
      neutral · thinking (<50) · encouraging (50–69)
      happy (70–89) · celebrating (>=90 / mastery)
    ============================================================ */
 import { store } from "../core/store.js";
 
-const LAGOON = "#0D9488";
-const DARK = "#0B2420";
+const FEATHER = "#58CC02";
+const DARK = "#24333B";
 
 function face(mood) {
-  const cheeks = `<circle cx="76" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/><circle cx="136" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/>`;
+  const cheeks = `<circle cx="76" cy="128" r="8" fill="#FF8FAB" fill-opacity="0.65"/><circle cx="136" cy="128" r="8" fill="#FF8FAB" fill-opacity="0.65"/>`;
   switch (mood) {
     case "thinking":
       return `${cheeks}
@@ -32,12 +32,12 @@ function face(mood) {
         <path d="M 88 128 Q 106 150 124 128 Q 106 138 88 128 Z" fill="#fff"/>`;
     case "celebrating":
       return `${cheeks}
-        <polygon points="88,98 91.5,105.5 99.5,106.5 93.5,111.5 95.5,119.5 88,115 80.5,119.5 82.5,111.5 76.5,106.5 84.5,105.5" fill="#F59E0B"/>
-        <polygon points="124,98 127.5,105.5 135.5,106.5 129.5,111.5 131.5,119.5 124,115 116.5,119.5 118.5,111.5 112.5,106.5 120.5,105.5" fill="#F59E0B"/>
+        <polygon points="88,98 91.5,105.5 99.5,106.5 93.5,111.5 95.5,119.5 88,115 80.5,119.5 82.5,111.5 76.5,106.5 84.5,105.5" fill="#FFC800"/>
+        <polygon points="124,98 127.5,105.5 135.5,106.5 129.5,111.5 131.5,119.5 124,115 116.5,119.5 118.5,111.5 112.5,106.5 120.5,105.5" fill="#FFC800"/>
         <path d="M 86 126 Q 106 156 126 126 Q 106 140 86 126 Z" fill="#fff"/>
-        <circle cx="26" cy="30" r="5" fill="#14B8A6"/><circle cx="176" cy="44" r="5" fill="#F59E0B"/>
-        <rect x="16" y="120" width="9" height="14" rx="2" fill="#F59E0B" transform="rotate(-18 20 127)"/>
-        <rect x="178" y="108" width="9" height="14" rx="2" fill="#14B8A6" transform="rotate(20 182 115)"/>`;
+        <circle cx="26" cy="30" r="5" fill="#1CB0F6"/><circle cx="176" cy="44" r="5" fill="#FFC800"/>
+        <rect x="16" y="120" width="9" height="14" rx="2" fill="#FFC800" transform="rotate(-18 20 127)"/>
+        <rect x="178" y="108" width="9" height="14" rx="2" fill="#1CB0F6" transform="rotate(20 182 115)"/>`;
     default: /* neutral */
       return `${cheeks}
         <circle cx="88" cy="108" r="9" fill="#fff"/><circle cx="124" cy="108" r="9" fill="#fff"/>
@@ -50,14 +50,14 @@ function face(mood) {
 export function siggySVG(mood = "neutral") {
   const thumbWave = mood === "celebrating" || mood === "happy";
   return `<svg viewBox="0 0 212 212" role="img" aria-label="Siggy the Signa mascot, ${mood}" xmlns="http://www.w3.org/2000/svg">
-  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="${LAGOON}"/>
-  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="${LAGOON}"/>
-  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="${LAGOON}"/>
-  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="${LAGOON}"/>
-  <rect x="20" y="96" width="20" height="52" rx="10" fill="${LAGOON}" transform="rotate(${thumbWave ? -34 : -18} 30 122)"/>
-  <rect x="52" y="62" width="108" height="108" rx="36" fill="${LAGOON}"/>
+  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="${FEATHER}"/>
+  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="${FEATHER}"/>
+  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="${FEATHER}"/>
+  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="${FEATHER}"/>
+  <rect x="20" y="96" width="20" height="52" rx="10" fill="${FEATHER}" transform="rotate(${thumbWave ? -34 : -18} 30 122)"/>
+  <rect x="52" y="62" width="108" height="108" rx="36" fill="${FEATHER}"/>
   <g transform="translate(0 2)">${face(mood)}</g>
-  <rect x="80" y="172" width="52" height="20" rx="10" fill="#F59E0B"/>
+  <rect x="80" y="172" width="52" height="20" rx="10" fill="#FF9600"/>
 </svg>`;
 }
 

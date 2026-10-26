@@ -4,38 +4,39 @@
    Light overrides live in theme.css under [data-theme="light"].
    ============================================================ */
 :root {
-  /* Brand accents (same in both modes) */
-  --accent: #2DD4BF;
-  --accent-hover: #5EEAD4;
-  --accent-2: #FBBF24;
-  --accent-2-hover: #FCD34D;
-  --on-accent: #03251F;
-  --on-accent-2: #2A1600;
-  --glow: rgba(45, 212, 191, 0.22);
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
-  --accent-soft: rgba(45, 212, 191, 0.14);
-  --accent-border: rgba(45, 212, 191, 0.38);
-  --success-soft: rgba(34, 197, 94, 0.15);
-  --warning-soft: rgba(245, 158, 11, 0.15);
-  --error-soft: rgba(239, 68, 68, 0.14);
-  --teal-soft: rgba(251, 191, 36, 0.14);
+  /* Duolingo-inspired brand accents: Feather Green + sky blue. */
+  --accent: #58CC02;
+  --accent-hover: #89E219;
+  --accent-2: #1CB0F6;
+  --accent-2-hover: #57C8FF;
+  --on-accent: #0B1D00;
+  --on-accent-2: #06283D;
+  --on-warning: #332500;
+  --glow: rgba(88, 204, 2, 0.24);
+  --success: #58CC02;
+  --warning: #FFC800;
+  --error: #FF4B4B;
+  --accent-soft: rgba(88, 204, 2, 0.14);
+  --accent-border: rgba(88, 204, 2, 0.42);
+  --success-soft: rgba(88, 204, 2, 0.15);
+  --warning-soft: rgba(255, 200, 0, 0.16);
+  --error-soft: rgba(255, 75, 75, 0.15);
+  --accent-2-soft: rgba(28, 176, 246, 0.15);
 
   /* Dark mode surfaces (default) */
-  --bg: #061714;
-  --surface: #0B211D;
-  --surface-elevated: #122E29;
-  --border: #1C4038;
-  --text-primary: #F3FAF7;
-  --text-secondary: #A7BDB5;
-  --text-muted: #749288;
+  --bg: #131F24;
+  --surface: #1F2A30;
+  --surface-elevated: #26353D;
+  --border: #37464F;
+  --text-primary: #F1F7FB;
+  --text-secondary: #A9BCC6;
+  --text-muted: #7F96A3;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
-  --toggle-bg: #122E29;
-  --toggle-border: rgba(45, 212, 191, 0.42);
-  --camera-bg: #03100D;
-  --dot: rgba(153, 246, 228, 0.06);
+  --toggle-bg: #26353D;
+  --toggle-border: rgba(88, 204, 2, 0.48);
+  --camera-bg: #0B1418;
+  --dot: rgba(255, 255, 255, 0.055);
 
   /* Typography */
   --font-display: "Syne", system-ui, sans-serif;

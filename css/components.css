@@ -24,7 +24,7 @@
 .btn-teal:hover { background: var(--accent-2-hover); transform: scale(1.02); }
 .btn-ghost { background: transparent; color: var(--text-secondary); }
 .btn-ghost:hover { background: var(--surface-elevated); color: var(--text-primary); }
-.btn-danger { background: var(--error-soft); color: var(--error); border-color: rgba(239, 68, 68, 0.4); }
+.btn-danger { background: var(--error-soft); color: var(--error); border-color: rgba(255, 75, 75, 0.42); }
 .btn-danger:hover { background: var(--error); color: #fff; }
 .btn-sm { padding: 8px 16px; font-size: 14px; min-height: 40px; border-radius: 10px; }
 .btn-sm svg { width: 16px; height: 16px; }
@@ -65,8 +65,8 @@
 .badge-new { background: var(--surface-elevated); color: var(--text-secondary); }
 .badge-locked { background: var(--surface-elevated); color: var(--text-muted); }
 .badge-accent { background: var(--accent-soft); color: var(--accent); }
-html[data-theme="light"] .badge-accent { color: var(--accent-hover); }
-.badge-teal { background: var(--teal-soft); color: var(--accent-2); }
+html[data-theme="light"] .badge-accent { color: var(--accent); }
+.badge-teal { background: var(--accent-2-soft); color: var(--accent-2); }
 
 .status-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
 .status-dot.mastered { background: var(--success); box-shadow: 0 0 0 3px var(--success-soft); }
@@ -108,7 +108,7 @@ h2 > svg, h3 > svg, h4 > svg { vertical-align: -4px; }
 .score-ring__fill {
   stroke: var(--accent); stroke-linecap: round;
   transition: stroke-dashoffset 240ms var(--ease-out), stroke 240ms;
-  filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.45));
+  filter: drop-shadow(0 0 6px rgba(88, 204, 2, 0.45));
 }
 .score-ring__center {
   position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
@@ -254,7 +254,7 @@ button.sign-chip:hover { border-color: var(--accent); color: var(--accent); }
 button.calendar__day:hover { border-color: var(--accent-border); }
 .calendar__day.is-filled { background: var(--accent); color: var(--on-accent); }
 .calendar__day.is-today { border-color: var(--accent-2); color: var(--text-primary); }
-.calendar__day.is-filled.is-today { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--teal-soft); }
+.calendar__day.is-filled.is-today { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--accent-2-soft); }
 .calendar__day.is-empty { background: transparent; }
 .calendar__day.is-future { opacity: 0.35; }
 .calendar.lg .calendar__day { font-size: 13px; border-radius: 10px; }
@@ -263,7 +263,7 @@ button.calendar__day:hover { border-color: var(--accent-border); }
 
 /* ---------- Modal / bottom sheet ---------- */
 .modal-backdrop {
-  position: fixed; inset: 0; z-index: 200; background: rgba(3, 6, 14, 0.62);
+  position: fixed; inset: 0; z-index: 200; background: rgba(10, 18, 22, 0.62);
   display: grid; place-items: center; padding: var(--space-4); animation: fadeIn 200ms both;
 }
 .modal {
@@ -302,17 +302,17 @@ button.calendar__day:hover { border-color: var(--accent-border); }
 .camera-frame canvas { pointer-events: none; }
 .camera-frame__placeholder {
   position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-6);
-  text-align: center; color: #CBD5E1;
+  text-align: center; color: #D7E6EE;
 }
 .camera-pill {
   position: absolute; top: 10px; left: 10px; z-index: 3;
   display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(5, 8, 15, 0.72); color: #F9FAFB; backdrop-filter: blur(6px);
+  background: rgba(11, 20, 24, 0.74); color: #F7FBFF; backdrop-filter: blur(6px);
   padding: 6px 11px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600;
 }
 .camera-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); }
 .camera-pill .dot.on { background: var(--success); }
-.camera-pill.warn { color: #FDE68A; }
+.camera-pill.warn { color: #FFE29A; }
 .avatar-frame {
   position: relative; border-radius: var(--radius-lg); border: 1px solid var(--border);
   background: var(--surface-elevated); aspect-ratio: 4 / 3;

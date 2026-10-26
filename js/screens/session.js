@@ -46,7 +46,7 @@ export function paintScoreRing(root, score) {
   if (!fill) return;
   const s = clamp(Math.round(score), 0, 100);
   fill.style.strokeDashoffset = String(RING_C * (1 - s / 100));
-  fill.style.stroke = s >= 90 ? "#22C55E" : hexLerp("#F59E0B", "#14B8A6", s / 100);
+  fill.style.stroke = s >= 90 ? "#58CC02" : hexLerp("#FF9600", "#58CC02", s / 100);
   if (val) val.textContent = `${s}%`;
 }
 
@@ -78,14 +78,14 @@ export function createPracticeSession({
           <span class="camera-pill" data-pill><span class="dot"></span><span data-pill-text>Camera off</span></span>
           <div class="camera-frame__placeholder" data-placeholder>
             <div style="display:grid;justify-items:center;gap:12px;width:min(380px,100%);max-width:380px">
-              <span style="width:58px;height:58px;border-radius:16px;background:rgba(20,184,166,.22);color:#99F6E4;display:grid;place-items:center">${icon("video")}</span>
+              <span style="width:58px;height:58px;border-radius:16px;background:rgba(28,176,246,.24);color:#BDEBFF;display:grid;place-items:center">${icon("video")}</span>
               <h3 style="color:#F9FAFB">Signa needs your camera</h3>
               <p class="text-small" style="color:#CBD5E1">Your video never leaves your device. Hand tracking runs 100% locally in your browser — nothing is uploaded or recorded.</p>
               <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
                 <button class="btn btn-primary" data-allow>${icon("camera")} Allow Camera</button>
-                <button class="btn btn-secondary" data-sim-open style="color:#99F6E4;border-color:#14B8A6">Use finger simulator</button>
+                <button class="btn btn-secondary" data-sim-open style="color:#BDEBFF;border-color:#1CB0F6">Use finger simulator</button>
               </div>
-              <p class="text-small" data-cam-error style="color:#FCA5A5" hidden></p>
+              <p class="text-small" data-cam-error style="color:#FFB2B2" hidden></p>
             </div>
           </div>
         </div>

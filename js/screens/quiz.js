@@ -122,7 +122,7 @@ export function renderQuiz(mount, moduleId) {
     $("[data-practice]", mount)?.addEventListener("click", () => navigate("#/practice"));
 
     if (passed) { confettiBurst(); celebrateSiggy(`Module ${mod.id} complete at ${avg}%!`); }
-    else setSiggy("encouraging", `${avg}% — review the amber signs and the retry is yours.`);
+    else setSiggy("encouraging", `${avg}% — review the yellow signs and the retry is yours.`);
   }
 
   intro();

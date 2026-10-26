@@ -21,7 +21,7 @@ export function openDaySheet(key) {
   const detail = dayDetail(key);
   const nice = new Date(key + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   if (!detail || detail.attempts === 0) {
-    openModal({ title: nice, bodyHTML: `<p class="text-body text-secondary">No practice logged on this day.</p><p class="text-small text-muted" style="margin-top:8px">A single scored attempt on any day paints it teal and feeds your streak.</p>` });
+    openModal({ title: nice, bodyHTML: `<p class="text-body text-secondary">No practice logged on this day.</p><p class="text-small text-muted" style="margin-top:8px">A single scored attempt on any day paints it green and feeds your streak.</p>` });
     return;
   }
   openModal({
@@ -123,7 +123,7 @@ export function renderProgress(mount) {
   function mapTile(sign) {
     const sp = store.signProgress(sign.id);
     const bg = sp.status === "mastered" ? "var(--success)" : sp.status === "learning" ? "var(--warning)" : "var(--surface-elevated)";
-    const fg = sp.status === "new" ? "var(--text-muted)" : "#10201A";
+    const fg = sp.status === "new" ? "var(--text-muted)" : sp.status === "mastered" ? "var(--on-accent)" : "var(--on-warning)";
     return `<button data-sign="${sign.id}" title="${sign.name}: ${STATUS_META[sp.status].label}${sp.attempts ? `, best ${sp.best_score}%` : ""}"
       style="border-radius:10px;background:${bg};color:${fg};font-family:var(--font-mono);font-weight:700;font-size:${sign.name.length > 1 ? 11 : 15}px;padding:10px 4px;min-height:44px">${sign.name}</button>`;
   }

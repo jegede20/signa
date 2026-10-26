@@ -76,7 +76,7 @@ export function renderHome(mount) {
         ${icon("arrowRight")}
       </button>
       <button class="card card-hover entry-card" data-go="#/practice" style="text-align:left">
-        <span class="entry-card__icon" style="background:var(--teal-soft);color:var(--accent-2)">${icon("target")}</span>
+        <span class="entry-card__icon" style="background:var(--accent-2-soft);color:var(--accent-2)">${icon("target")}</span>
         <span><strong class="text-h3" style="display:block">Free Practice</strong><span class="text-small text-secondary">Pick any sign, go random, or drill your weakest.</span></span>
         ${icon("arrowRight")}
       </button>
