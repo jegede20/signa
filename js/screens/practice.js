@@ -48,7 +48,7 @@ function renderPicker(mount) {
       <p class="text-body text-secondary" style="margin-top:6px">No lesson flow, no pressure — pick a sign and repeat it until it sticks.</p>
     </header>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px">
       <button class="card card-hover entry-card" data-random style="text-align:left">
         <span class="entry-card__icon" style="background:var(--accent-soft);color:var(--accent)">${icon("shuffle")}</span>
         <span><strong class="text-h3" style="display:block">Random Sign</strong><span class="text-small text-secondary">A surprise sign from your unlocked set.</span></span>${icon("arrowRight")}

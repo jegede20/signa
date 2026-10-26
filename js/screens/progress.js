@@ -21,7 +21,7 @@ export function openDaySheet(key) {
   const detail = dayDetail(key);
   const nice = new Date(key + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
   if (!detail || detail.attempts === 0) {
-    openModal({ title: nice, bodyHTML: `<p class="text-body text-secondary">No practice logged on this day.</p><p class="text-small text-muted" style="margin-top:8px">A single scored attempt on any day paints it violet and feeds your streak.</p>` });
+    openModal({ title: nice, bodyHTML: `<p class="text-body text-secondary">No practice logged on this day.</p><p class="text-small text-muted" style="margin-top:8px">A single scored attempt on any day paints it teal and feeds your streak.</p>` });
     return;
   }
   openModal({
@@ -73,14 +73,14 @@ export function renderProgress(mount) {
       <section class="card stat-card"><span class="stat-value">${s.longestStreak}d</span><span class="stat-label">Longest streak</span></section>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;align-items:start">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;align-items:start">
       <section class="card">
         <div class="streak-head" style="margin-bottom:16px">
           <span class="streak-flame">${icon("flame")}</span>
-          <div style="min-width:118px"><h3>${s.streak} Day Streak</h3><p class="text-small text-secondary">${practicedToday() ? "Today counted. Nice." : streakAtRisk() ? "Practice today to keep it alive." : "Longest: " + s.longestStreak + " days"}</p></div>
+          <div style="flex:1 1 118px;min-width:0"><h3>${s.streak} Day Streak</h3><p class="text-small text-secondary">${practicedToday() ? "Today counted. Nice." : streakAtRisk() ? "Practice today to keep it alive." : "Longest: " + s.longestStreak + " days"}</p></div>
           <div style="margin-left:auto;display:flex;align-items:center;gap:4px">
             <button class="icon-btn" data-prev aria-label="Previous month">${icon("arrowLeft")}</button>
-            <span class="text-small" style="font-weight:700;min-width:118px;text-align:center" data-month-label></span>
+            <span class="text-small" style="font-weight:700;min-width:104px;text-align:center" data-month-label></span>
             <button class="icon-btn" data-next aria-label="Next month">${icon("arrowRight")}</button>
           </div>
         </div>
@@ -123,7 +123,7 @@ export function renderProgress(mount) {
   function mapTile(sign) {
     const sp = store.signProgress(sign.id);
     const bg = sp.status === "mastered" ? "var(--success)" : sp.status === "learning" ? "var(--warning)" : "var(--surface-elevated)";
-    const fg = sp.status === "new" ? "var(--text-muted)" : "#fff";
+    const fg = sp.status === "new" ? "var(--text-muted)" : "#10201A";
     return `<button data-sign="${sign.id}" title="${sign.name}: ${STATUS_META[sp.status].label}${sp.attempts ? `, best ${sp.best_score}%` : ""}"
       style="border-radius:10px;background:${bg};color:${fg};font-family:var(--font-mono);font-weight:700;font-size:${sign.name.length > 1 ? 11 : 15}px;padding:10px 4px;min-height:44px">${sign.name}</button>`;
   }

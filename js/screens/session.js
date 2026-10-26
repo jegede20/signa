@@ -46,7 +46,7 @@ export function paintScoreRing(root, score) {
   if (!fill) return;
   const s = clamp(Math.round(score), 0, 100);
   fill.style.strokeDashoffset = String(RING_C * (1 - s / 100));
-  fill.style.stroke = s >= 90 ? "#10B981" : hexLerp("#7C3AED", "#14B8A6", s / 100);
+  fill.style.stroke = s >= 90 ? "#22C55E" : hexLerp("#F59E0B", "#14B8A6", s / 100);
   if (val) val.textContent = `${s}%`;
 }
 
@@ -77,13 +77,13 @@ export function createPracticeSession({
           <canvas data-canvas></canvas>
           <span class="camera-pill" data-pill><span class="dot"></span><span data-pill-text>Camera off</span></span>
           <div class="camera-frame__placeholder" data-placeholder>
-            <div style="display:grid;justify-items:center;gap:12px;max-width:380px">
-              <span style="width:58px;height:58px;border-radius:16px;background:rgba(124,58,237,.22);color:#C4B5FD;display:grid;place-items:center">${icon("video")}</span>
+            <div style="display:grid;justify-items:center;gap:12px;width:min(380px,100%);max-width:380px">
+              <span style="width:58px;height:58px;border-radius:16px;background:rgba(20,184,166,.22);color:#99F6E4;display:grid;place-items:center">${icon("video")}</span>
               <h3 style="color:#F9FAFB">Signa needs your camera</h3>
               <p class="text-small" style="color:#CBD5E1">Your video never leaves your device. Hand tracking runs 100% locally in your browser — nothing is uploaded or recorded.</p>
               <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
                 <button class="btn btn-primary" data-allow>${icon("camera")} Allow Camera</button>
-                <button class="btn btn-secondary" data-sim-open style="color:#C4B5FD;border-color:#7C3AED">Use finger simulator</button>
+                <button class="btn btn-secondary" data-sim-open style="color:#99F6E4;border-color:#14B8A6">Use finger simulator</button>
               </div>
               <p class="text-small" data-cam-error style="color:#FCA5A5" hidden></p>
             </div>
@@ -99,11 +99,11 @@ export function createPracticeSession({
     <div class="card" style="margin-top:16px;padding:20px">
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
         ${store.settings.showScoreRing ? `<div style="display:grid;justify-items:center;gap:8px">${scoreRingHTML()}<span class="text-small text-secondary">Best: <strong class="text-mono" data-best>0%</strong></span></div>` : `<div style="display:grid;gap:2px"><span class="text-stat" data-current-num>0%</span><span class="text-label">Live score</span><span class="text-small text-secondary" style="margin-top:8px">Best: <strong class="text-mono" data-best-num>0%</strong></span></div>`}
-        <div style="flex:1;min-width:250px;display:grid;gap:14px">
+        <div class="session-feedback">
           <div class="feedback-bar" data-feedback role="status" aria-live="polite">${icon("lightbulb")}<span data-tip>Enable your camera (or the simulator), then copy the guide's handshape.</span></div>
           <div data-meters style="display:grid;gap:8px" ${store.settings.verbosity === "simple" ? "hidden" : ""}></div>
         </div>
-        <div style="display:grid;gap:10px;min-width:190px">
+        <div class="session-actions">
           <button class="btn btn-primary" data-submit disabled>${icon("check")} ${submitLabel}</button>
           <button class="btn btn-secondary btn-sm" data-sim-open-2>${icon("hand")} Finger simulator</button>
           <p class="text-small text-muted" style="text-align:center">We save your <strong>best</strong> shape, not your last one.</p>
@@ -114,7 +114,7 @@ export function createPracticeSession({
     <div class="card" data-sim hidden style="margin-top:16px;padding:20px">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px">
         <h3 style="display:flex;align-items:center;gap:8px">${icon("hand")} Finger simulator</h3>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="sim-presets">
           <button class="btn btn-ghost btn-sm" data-preset="open">Open hand</button>
           <button class="btn btn-ghost btn-sm" data-preset="fist">Fist</button>
           <button class="btn btn-teal btn-sm" data-preset="match">${icon("target")} Match “${sign.name}”</button>
@@ -122,7 +122,7 @@ export function createPracticeSession({
         </div>
       </div>
       <p class="text-small text-secondary" style="margin-bottom:14px">No camera? Bend each virtual finger and the same scoring engine grades you. Slide left = straight, right = fully curled.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:14px">
         ${FINGERS.map((f) => `<div class="field"><label for="sim-${f}">${cap(FINGER_LABELS[f])} <span class="text-muted" data-sim-val="${f}"></span></label>
           <input type="range" id="sim-${f}" data-sim-finger="${f}" min="0" max="100" value="0"></div>`).join("")}
         <div class="field"><label for="sim-spread">Finger spread</label><input type="range" id="sim-spread" data-sim-spread min="0" max="100" value="60"></div>

@@ -15,13 +15,13 @@
 .btn:hover { text-decoration: none; }
 .btn:active { transform: scale(0.98); }
 .btn svg { width: 19px; height: 19px; flex: none; }
-.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 20px var(--glow); }
+.btn-primary { background: var(--accent); color: var(--on-accent); box-shadow: 0 6px 20px var(--glow); }
 .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
 .btn-primary:active { transform: scale(0.98); }
 .btn-secondary { background: transparent; border-color: var(--accent); color: var(--accent); }
 .btn-secondary:hover { background: var(--accent-soft); }
-.btn-teal { background: var(--accent-2); color: #fff; }
-.btn-teal:hover { background: #0F9B8A; transform: scale(1.02); }
+.btn-teal { background: var(--accent-2); color: var(--on-accent-2); }
+.btn-teal:hover { background: var(--accent-2-hover); transform: scale(1.02); }
 .btn-ghost { background: transparent; color: var(--text-secondary); }
 .btn-ghost:hover { background: var(--surface-elevated); color: var(--text-primary); }
 .btn-danger { background: var(--error-soft); color: var(--error); border-color: rgba(239, 68, 68, 0.4); }
@@ -81,7 +81,7 @@ html[data-theme="light"] .badge-accent { color: var(--accent-hover); }
   transition: all var(--dur); min-height: 40px;
 }
 .chip:hover { border-color: var(--accent-border); color: var(--text-primary); }
-.chip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip.is-active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .chip svg { width: 15px; height: 15px; }
 
 /* ---------- Progress bars & meters ---------- */
@@ -108,7 +108,7 @@ h2 > svg, h3 > svg, h4 > svg { vertical-align: -4px; }
 .score-ring__fill {
   stroke: var(--accent); stroke-linecap: round;
   transition: stroke-dashoffset 240ms var(--ease-out), stroke 240ms;
-  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.45));
+  filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.45));
 }
 .score-ring__center {
   position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
@@ -148,7 +148,7 @@ h2 > svg, h3 > svg, h4 > svg { vertical-align: -4px; }
   transition: all var(--dur);
 }
 .step-indicator__dot svg { width: 14px; height: 14px; }
-.step-indicator__dot.is-current { border-color: var(--accent); background: var(--accent); color: #fff; }
+.step-indicator__dot.is-current { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
 .step-indicator__dot.is-done { border-color: var(--success); background: var(--success); color: #fff; }
 .step-indicator__line { height: 2px; width: 44px; background: var(--border); }
 .step-indicator__line.is-done { background: var(--success); }
@@ -175,7 +175,7 @@ h2 > svg, h3 > svg, h4 > svg { vertical-align: -4px; }
 .search-wrap .input { padding-left: 42px; }
 
 .switch { position: relative; width: 50px; height: 28px; flex: none; }
-.switch input { position: absolute; opacity: 0; inset: 0; cursor: pointer; z-index: 2; }
+.switch input { position: absolute; opacity: 0; inset: -10px 0; cursor: pointer; z-index: 2; }
 .switch__track {
   position: absolute; inset: 0; border-radius: var(--radius-full);
   background: var(--surface-elevated); border: 1px solid var(--border);
@@ -243,22 +243,22 @@ button.sign-chip:hover { border-color: var(--accent); color: var(--accent); }
   display: grid; place-items: center; color: var(--warning); background: var(--warning-soft);
 }
 .streak-flame svg { width: 24px; height: 24px; }
-.calendar { display: grid; gap: 6px; }
-.calendar__head, .calendar__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.calendar { display: grid; gap: 6px; min-width: 0; }
+.calendar__head, .calendar__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
 .calendar__head span { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); }
 .calendar__day {
   aspect-ratio: 1; border-radius: 7px; display: grid; place-items: center;
   font-size: 11px; font-weight: 600; color: var(--text-muted);
-  background: var(--surface-elevated); border: 1px solid transparent; min-height: 0;
+  background: var(--surface-elevated); border: 1px solid transparent; min-height: 0; min-width: 0;
 }
 button.calendar__day:hover { border-color: var(--accent-border); }
-.calendar__day.is-filled { background: var(--accent); color: #fff; }
+.calendar__day.is-filled { background: var(--accent); color: var(--on-accent); }
 .calendar__day.is-today { border-color: var(--accent-2); color: var(--text-primary); }
 .calendar__day.is-filled.is-today { border-color: var(--accent-2); box-shadow: 0 0 0 2px var(--teal-soft); }
 .calendar__day.is-empty { background: transparent; }
 .calendar__day.is-future { opacity: 0.35; }
 .calendar.lg .calendar__day { font-size: 13px; border-radius: 10px; }
-.week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.week-strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; min-width: 0; }
 .week-strip .calendar__day { font-size: 12px; }
 
 /* ---------- Modal / bottom sheet ---------- */
@@ -326,6 +326,10 @@ button.calendar__day:hover { border-color: var(--accent-border); }
 }
 .session-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 .session-grid.single { grid-template-columns: 1fr; }
+.session-feedback { flex: 1 1 250px; min-width: min(250px, 100%); display: grid; gap: 14px; align-content: start; }
+.session-actions { display: grid; gap: 10px; min-width: 190px; align-content: start; }
+.session-actions .btn { width: 100%; }
+.sim-presets { display: flex; gap: 8px; flex-wrap: wrap; }
 @media (max-width: 767px) { .session-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Siggy ---------- */
@@ -356,7 +360,7 @@ button.calendar__day:hover { border-color: var(--accent-border); }
 .logo:hover { text-decoration: none; }
 .logo__mark {
   width: 36px; height: 36px; border-radius: 11px; flex: none;
-  background: var(--accent); color: #fff; display: grid; place-items: center;
+  background: var(--accent); color: var(--on-accent); display: grid; place-items: center;
   box-shadow: 0 6px 16px var(--glow);
 }
 .logo__mark svg { width: 21px; height: 21px; }
@@ -376,4 +380,40 @@ button.calendar__day:hover { border-color: var(--accent-border); }
 .list-row.is-active { background: var(--accent-soft); }
 .dot-grid-bg {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%2394A3B8' fill-opacity='0.16'/%3E%3C/svg%3E");
+}
+
+
+/* ---------- Responsive fit pass: controls stay visible, aligned, tappable ---------- */
+.streak-head { flex-wrap: wrap; row-gap: 10px; }
+.setting-row { flex-wrap: wrap; }
+.setting-row__text { flex: 1 1 190px; min-width: 0; }
+.setting-row .select { flex: 0 1 190px; }
+
+@media (max-width: 767px) {
+  .card { padding: 20px; }
+  .btn-sm { min-height: 48px; padding: 10px 18px; }
+  .btn-lg { min-height: 52px; padding: 13px 22px; font-size: 16px; }
+  .chip { min-height: 48px; padding: 10px 16px; }
+  .icon-btn { width: 48px; height: 48px; }
+  .sign-chip { min-height: 44px; padding: 9px 12px; }
+  .calendar__head, .calendar__grid { gap: 4px; }
+  .calendar__day { min-height: 42px; }
+  .meter { grid-template-columns: minmax(82px, 34%) minmax(0, 1fr) 46px; gap: 10px; }
+  .avatar-frame { aspect-ratio: 16 / 10; }
+  .avatar-frame [data-demo] { width: min(46%, 170px) !important; }
+  .camera-frame { aspect-ratio: auto; min-height: 330px; }
+  .camera-frame__placeholder { padding: 20px; }
+  .session-actions { width: 100%; min-width: 0; }
+  .session-feedback { flex-basis: 100%; }
+  .sim-presets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .sim-presets .btn { width: 100%; }
+  .sign-grid { grid-template-columns: repeat(auto-fill, minmax(min(104px, 100%), 1fr)); }
+  .setting-row .select { flex: 1 1 150px; min-width: min(150px, 100%); }
+  .modal { padding: 24px 20px calc(24px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 380px) {
+  .card { padding: 18px; }
+  .score-ring { width: 118px; height: 118px; }
+  .camera-frame { min-height: 310px; }
 }

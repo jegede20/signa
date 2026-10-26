@@ -109,9 +109,9 @@ html[data-theme="light"] .nav-item.is-active { color: var(--accent-hover); }
 .bottom-nav__siggy svg { width: 34px; height: 34px; }
 
 /* ---------- Screen layout helpers ---------- */
-.dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: var(--space-4); }
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-4); }
+.dash-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr)); gap: var(--space-4); }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: var(--space-4); }
 .mastery-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; }
 .mastery-map.phrases { grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); }
 .entry-card { display: flex; align-items: center; gap: var(--space-4); width: 100%; }
@@ -144,3 +144,29 @@ html[data-theme="light"] .nav-item.is-active { color: var(--accent-hover); }
   .logo { font-size: 19px; }
   .topbar { gap: var(--space-2); padding: 0 var(--space-3); }
 }
+
+
+/* Keep grid children shrinkable so cards never force the shell wider than the viewport. */
+.dash-grid > *, .lib-grid > *, .stats-row > *, .session-grid > * { min-width: 0; }
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .dash-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  /* On phones the bottom-nav Siggy tab is the trigger; no round bubble covering controls. */
+  .siggy-bubble { left: 14px; right: 14px; pointer-events: none; align-items: stretch; }
+  .siggy-bubble__btn { display: none; }
+  .siggy-bubble__msg { pointer-events: auto; width: 100%; max-width: none; }
+}
+
+@media (max-width: 380px) {
+  .topbar { gap: 8px; padding: 0 10px; }
+  .logo { gap: 7px; font-size: 18px; }
+  .logo__mark { width: 33px; height: 33px; }
+  .streak-count { padding: 6px 9px; }
+  .main-inner { padding-inline: 14px; }
+}
+
+.screen-enter { grid-template-columns: minmax(0, 1fr); }
+.entry-card > span { min-width: 0; }

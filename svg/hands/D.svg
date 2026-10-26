@@ -1,10 +1,10 @@
 <svg viewBox="0 0 240 260" role="img" aria-label="Hand shape for D" xmlns="http://www.w3.org/2000/svg">
   <g transform=""><g transform="">
-    <rect x="90" y="214" width="58" height="26" rx="12" fill="#14B8A6"/>
-    <path d="M 80 178 L 58 142 L 68 110" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><rect x="70" y="116" width="98" height="106" rx="30" fill="#7C3AED"/>
+    <rect x="90" y="214" width="58" height="26" rx="12" fill="#F59E0B"/>
+    <path d="M 80 178 L 58 142 L 68 110" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><rect x="70" y="116" width="98" height="106" rx="30" fill="#0D9488"/>
     <path d="M 92 168 Q 118 156 144 168" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 94 192 Q 118 182 142 192" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/><path d="M 89 132 L 89 56" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111 132 L 111 87.28 L 125 105.28" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 133 132 L 133 91.44 L 119 109.44" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 153 132 L 153 101.84 L 139 119.84" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="96.5" cy="107.64" r="17" fill="none" stroke="#14B8A6" stroke-width="3.5" stroke-dasharray="6 6">
+    <path d="M 94 192 Q 118 182 142 192" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/><path d="M 89 132 L 89 56" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111 132 L 111 87.28 L 125 105.28" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 133 132 L 133 91.44 L 119 109.44" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 153 132 L 153 101.84 L 139 119.84" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="96.5" cy="107.64" r="17" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="6 6">
       <animate attributeName="stroke-dashoffset" from="0" to="24" dur="1.6s" repeatCount="indefinite"/></circle>
   </g></g>
 </svg>

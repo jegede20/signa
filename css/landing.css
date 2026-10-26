@@ -77,7 +77,7 @@ html[data-theme="light"] .hero__eyebrow { color: var(--accent-hover); }
   width: 30px; height: 30px; display: grid; place-items: center;
   border-radius: 8px; background: var(--surface); border: 1px solid var(--border);
 }
-.alpha-strip span.done { background: var(--success); color: #fff; border-color: var(--success); }
+.alpha-strip span.done { background: var(--success); color: #052E16; border-color: var(--success); }
 .alpha-strip span.doing { background: var(--warning); color: #fff; border-color: var(--warning); }
 .mastery-bars { display: grid; gap: 8px; }
 
@@ -110,4 +110,30 @@ html[data-theme="light"] .hero__eyebrow { color: var(--accent-hover); }
   .bento, .steps { grid-template-columns: 1fr; }
   .bento .span-2 { grid-column: auto; }
   .section { padding: var(--space-12) 0; }
+}
+
+
+/* Small-screen landing fit: nav and hero CTA never clip or wrap awkwardly. */
+.bento > *, .steps > *, .hero__grid > * { min-width: 0; }
+
+@media (max-width: 767px) {
+  .hero .btn-lg { width: min(100%, 420px); white-space: nowrap; font-size: 15px; padding-inline: 16px; }
+  .hero__eyebrow { line-height: 1.35; }
+}
+
+@media (max-width: 640px) {
+  .landing-nav__inner { gap: 10px; }
+  .landing-nav .theme-toggle-slot { margin-left: auto; }
+  .landing-nav .btn { margin-left: 0; padding: 9px 13px; font-size: 14px; white-space: nowrap; min-height: 44px; }
+  .landing .logo { font-size: 19px; }
+  .landing .logo__mark { width: 34px; height: 34px; }
+}
+
+@media (max-width: 380px) {
+  .landing .wrap { padding: 0 14px; }
+  .landing-nav__inner { gap: 8px; }
+  .landing .logo { gap: 7px; font-size: 18px; }
+  .landing .logo__mark { width: 32px; height: 32px; border-radius: 10px; }
+  .landing-nav .btn { padding: 8px 11px; font-size: 13.5px; }
+  .hero h1 { font-size: 34px; }
 }

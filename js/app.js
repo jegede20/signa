@@ -84,9 +84,7 @@ async function boot() {
   const bubble = $("[data-siggy-bubble]");
   const toggleBubble = () => bubble?.classList.toggle("is-open");
   $("[data-siggy-bubble-btn]")?.addEventListener("click", toggleBubble);
-  $("[data-siggy-tab]")?.addEventListener("click", () => {
-    bubble?.classList.add("is-open");
-  });
+  $("[data-siggy-tab]")?.addEventListener("click", toggleBubble);
 
   // 2 — load progress from IndexedDB
   await store.loadAll();

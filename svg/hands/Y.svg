@@ -1,9 +1,9 @@
 <svg viewBox="0 0 240 260" role="img" aria-label="Hand shape for Y" xmlns="http://www.w3.org/2000/svg">
   <g transform=""><g transform="">
-    <rect x="90" y="214" width="58" height="26" rx="12" fill="#14B8A6"/>
-    <path d="M 80 178 L 52 134 L 40 94" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><rect x="70" y="116" width="98" height="106" rx="30" fill="#7C3AED"/>
+    <rect x="90" y="214" width="58" height="26" rx="12" fill="#F59E0B"/>
+    <path d="M 80 178 L 52 134 L 40 94" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><rect x="70" y="116" width="98" height="106" rx="30" fill="#0D9488"/>
     <path d="M 92 168 Q 118 156 144 168" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="4" stroke-linecap="round"/>
-    <path d="M 94 192 Q 118 182 142 192" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/><path d="M 89 132 L 89 113 L 92 145" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111 132 L 111 113 L 114 145" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 133 132 L 133 113 L 130 145" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 153 132 L 164 74" fill="none" stroke="#7C3AED" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 94 192 Q 118 182 142 192" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/><path d="M 89 132 L 89 113 L 92 145" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 111 132 L 111 113 L 114 145" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 133 132 L 133 113 L 130 145" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/><path d="M 153 132 L 164 74" fill="none" stroke="#0D9488" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>
     
   </g></g>
 </svg>

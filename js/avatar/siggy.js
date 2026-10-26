@@ -1,14 +1,14 @@
 /* ============================================================
    SIGNA — avatar/siggy.js
-   Siggy the mascot: a flat violet hand character with 5
+   Siggy the mascot: a flat lagoon-teal hand character with 5
    expressions driven by the live practice score.
      neutral · thinking (<50) · encouraging (50–69)
      happy (70–89) · celebrating (>=90 / mastery)
    ============================================================ */
 import { store } from "../core/store.js";
 
-const VIOLET = "#7C3AED";
-const DARK = "#1A2235";
+const LAGOON = "#0D9488";
+const DARK = "#0B2420";
 
 function face(mood) {
   const cheeks = `<circle cx="76" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/><circle cx="136" cy="128" r="8" fill="#F472B6" fill-opacity="0.65"/>`;
@@ -50,14 +50,14 @@ function face(mood) {
 export function siggySVG(mood = "neutral") {
   const thumbWave = mood === "celebrating" || mood === "happy";
   return `<svg viewBox="0 0 212 212" role="img" aria-label="Siggy the Signa mascot, ${mood}" xmlns="http://www.w3.org/2000/svg">
-  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="${VIOLET}"/>
-  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="${VIOLET}"/>
-  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="${VIOLET}"/>
-  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="${VIOLET}"/>
-  <rect x="20" y="96" width="20" height="52" rx="10" fill="${VIOLET}" transform="rotate(${thumbWave ? -34 : -18} 30 122)"/>
-  <rect x="52" y="62" width="108" height="108" rx="36" fill="${VIOLET}"/>
+  <rect x="62" y="16" width="21" height="58" rx="10.5" fill="${LAGOON}"/>
+  <rect x="88" y="6" width="21" height="68" rx="10.5" fill="${LAGOON}"/>
+  <rect x="114" y="12" width="21" height="62" rx="10.5" fill="${LAGOON}"/>
+  <rect x="140" y="26" width="19" height="48" rx="9.5" fill="${LAGOON}"/>
+  <rect x="20" y="96" width="20" height="52" rx="10" fill="${LAGOON}" transform="rotate(${thumbWave ? -34 : -18} 30 122)"/>
+  <rect x="52" y="62" width="108" height="108" rx="36" fill="${LAGOON}"/>
   <g transform="translate(0 2)">${face(mood)}</g>
-  <rect x="80" y="172" width="52" height="20" rx="10" fill="#14B8A6"/>
+  <rect x="80" y="172" width="52" height="20" rx="10" fill="#F59E0B"/>
 </svg>`;
 }
 

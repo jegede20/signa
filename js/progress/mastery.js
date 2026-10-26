@@ -104,7 +104,7 @@ export function signModuleUnlocked(signId) {
 
 /** Lightweight confetti burst (no library). Colors are solid brand tones. */
 export function confettiBurst(x = window.innerWidth / 2, y = window.innerHeight / 3) {
-  const colors = ["#7C3AED", "#14B8A6", "#F59E0B", "#10B981", "#F9FAFB"];
+  const colors = ["#14B8A6", "#F59E0B", "#22C55E", "#FBBF24", "#F9FAFB"];
   for (let i = 0; i < 26; i++) {
     const piece = document.createElement("span");
     piece.className = "confetti-piece";

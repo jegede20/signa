@@ -7,6 +7,8 @@ mastery and daily streaks — **100% in the browser**. No backend, no accounts,
 no install, no build step. Camera frames are processed on your device and never
 uploaded.
 
+**Live demo:** <https://signa-live-app.vercel.app> · **Practice booth:** <https://signa-live-app.vercel.app/app>
+
 ## Run it
 
 Any static file server works (ES modules require `http://`, not `file://`):

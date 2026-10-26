@@ -5,16 +5,16 @@
    that animates open → shaping → final pose.
 
    The hand is intentionally a clear teaching diagram:
-   violet hand, teal cuff, dashed annotation ring where the
+   lagoon-teal hand, amber cuff, dashed annotation ring where the
    thumb must touch a fingertip. Hands rotate for signs that
    point sideways/down. Pure functions (no DOM at import)
    so static SVGs can be generated from this same code.
    ============================================================ */
 import { stagePose } from "./poses/alphabet.js";
 
-const VIOLET = "#7C3AED";
-const DARK = "#6D28D9";
-const TEAL = "#14B8A6";
+const LAGOON = "#0D9488";
+const DEEP = "#0F766E";
+const AMBER = "#F59E0B";
 
 /* Finger geometry: base x, length */
 const FINGERS_GEO = {
@@ -79,19 +79,19 @@ export function renderHandSVG(sign, { stage = 2, hand = "right", annotate = true
   const mirror = hand === "left" ? "translate(240 0) scale(-1 1)" : "";
 
   // Thumb drawn across palm sits on top; otherwise behind fingers
-  const thumbEl = `<path d="${thumb.d}" fill="none" stroke="${tState === "C" ? DARK : VIOLET}" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const thumbEl = `<path d="${thumb.d}" fill="none" stroke="${tState === "C" ? DEEP : LAGOON}" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>`;
   const fingerEls = fingers.map((f) =>
-    `<path d="${f.d}" fill="none" stroke="${VIOLET}" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
-  const palm = `<rect x="70" y="116" width="98" height="106" rx="30" fill="${VIOLET}"/>
+    `<path d="${f.d}" fill="none" stroke="${LAGOON}" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>`).join("");
+  const palm = `<rect x="70" y="116" width="98" height="106" rx="30" fill="${LAGOON}"/>
     <path d="M 92 168 Q 118 156 144 168" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="4" stroke-linecap="round"/>
     <path d="M 94 192 Q 118 182 142 192" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round"/>`;
-  const cuff = `<rect x="90" y="214" width="58" height="26" rx="12" fill="${TEAL}"/>`;
+  const cuff = `<rect x="90" y="214" width="58" height="26" rx="12" fill="${AMBER}"/>`;
 
   let notes = "";
   if (annotate && stage === 2 && ex.thumbTouch && tipOf[ex.thumbTouch]) {
     const mx = (tipOf.thumb.x + tipOf[ex.thumbTouch].x) / 2;
     const my = (tipOf.thumb.y + tipOf[ex.thumbTouch].y) / 2;
-    notes = `<circle cx="${mx}" cy="${my}" r="17" fill="none" stroke="${TEAL}" stroke-width="3.5" stroke-dasharray="6 6">
+    notes = `<circle cx="${mx}" cy="${my}" r="17" fill="none" stroke="${AMBER}" stroke-width="3.5" stroke-dasharray="6 6">
       <animate attributeName="stroke-dashoffset" from="0" to="24" dur="1.6s" repeatCount="indefinite"/></circle>`;
   }
 
