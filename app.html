@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script>
+    /* Apply saved/system theme before first paint (no flash). */
+    (function () {
+      try {
+        var t = localStorage.getItem("signa_theme");
+        if (t !== "dark" && t !== "light") t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.dataset.theme = t;
+      } catch (e) { /* keep dark default */ }
+    })();
+  </script>
+  <title>Signa — Practice Booth</title>
+  <meta name="description" content="Learn sign language in your browser. Signa watches your hands through your webcam and coaches every sign in real time.">
+  <meta name="theme-color" content="#0A0F1E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237C3AED'/%3E%3Cpath d='M42 28V14a5 5 0 0 0-10 0v-2a5 5 0 0 0-10 0v14' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M22 26v12c0 9 6 14 14 14s14-5 14-14v-8' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app-body">
+  <div class="app-shell" id="app-shell">
+
+    <!-- ===== Topbar ===== -->
+    <header class="topbar">
+      <a class="logo" href="index.html" aria-label="Signa home">
+        <span class="logo__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span>
+        Signa
+      </a>
+      <nav class="topbar__nav" aria-label="Quick">
+        <a href="#/practice" data-nav="practice">Practice</a>
+        <a href="#/progress" data-nav="progress">Progress</a>
+        <a href="#/library" data-nav="library">Library</a>
+      </nav>
+      <div class="topbar__right">
+        <span class="theme-toggle-slot"></span>
+        <span class="streak-count" data-streak-count title="Current day streak">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          <span data-streak-num>0</span>
+        </span>
+      </div>
+    </header>
+
+    <!-- ===== Body: sidebar | canvas | Siggy ===== -->
+    <div class="app-main">
+      <aside class="sidebar" aria-label="App navigation">
+        <nav class="sidebar__nav">
+          <a class="nav-item" href="#/home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a>
+          <a class="nav-item" href="#/learn" data-nav="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Learn</span></a>
+          <a class="nav-item" href="#/practice" data-nav="practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>Free Practice</span></a>
+          <a class="nav-item" href="#/library" data-nav="library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg><span>Library</span></a>
+          <a class="nav-item" href="#/progress" data-nav="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span>Progress</span></a>
+          <a class="nav-item" href="#/settings" data-nav="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M2 14h4"/><path d="M10 8h4"/><path d="M18 16h4"/></svg><span>Settings</span></a>
+        </nav>
+        <div class="sidebar__scroll">
+          <section>
+            <div class="sidebar__section-title text-label">Alphabet A–Z</div>
+            <div class="sign-list" data-sidebar-signs></div>
+          </section>
+          <section>
+            <div class="sidebar__section-title text-label">Phrases</div>
+            <div class="sign-list" data-sidebar-phrases></div>
+          </section>
+        </div>
+        <div class="sidebar__streak-wrap">
+          <div class="sidebar__streak" data-sidebar-streak></div>
+        </div>
+      </aside>
+
+      <main class="main-canvas" id="main-canvas">
+        <div class="main-inner" id="screen">
+          <div class="card empty-state" style="margin-top:40px"><span class="spinner"></span><p>Loading your progress…</p></div>
+        </div>
+        <p class="text-small text-muted text-center" style="padding:0 16px 28px">Signa runs 100% in your browser. Your camera feed is never uploaded or recorded.</p>
+      </main>
+
+      <aside class="siggy-panel" aria-label="Siggy, your coach">
+        <div class="speech-bubble" data-siggy-bubble-panel style="width:100%">Hi! I am Siggy, your signing coach.</div>
+        <div class="siggy-art siggy-idle" data-siggy-art-panel style="width:128px;height:128px"></div>
+        <div style="text-align:center">
+          <strong class="font-display" style="font-size:18px">Siggy</strong>
+          <div class="text-small text-muted">Your signing coach</div>
+        </div>
+        <div class="siggy-mini-stats">
+          <div class="siggy-panel__card" style="text-align:center">
+            <div class="text-stat" style="font-size:22px" data-siggy-mastered>0</div>
+            <div class="text-label" style="margin-top:4px">Mastered</div>
+          </div>
+          <div class="siggy-panel__card" style="text-align:center">
+            <div class="text-stat" style="font-size:22px" data-siggy-avg>0%</div>
+            <div class="text-label" style="margin-top:4px">Avg best</div>
+          </div>
+        </div>
+        <div class="siggy-panel__card">
+          <span class="text-label">Coach's note</span>
+          <p class="text-small text-secondary" style="margin-top:8px">Slow, clear shapes beat fast ones. Watch the guide, build the sign finger by finger, and hold it for two seconds.</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ===== Bottom nav (mobile) ===== -->
+    <nav class="bottom-nav" aria-label="Mobile">
+      <a href="#/home" data-nav="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Home</a>
+      <a href="#/learn" data-nav="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Learn</a>
+      <a href="#/practice" data-nav="practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Practice</a>
+      <a href="#/progress" data-nav="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Progress</a>
+      <button type="button" data-siggy-tab aria-label="Ask Siggy"><span class="bottom-nav__siggy" data-siggy-art-tab></span>Siggy</button>
+    </nav>
+  </div>
+
+  <!-- Floating Siggy (tablet / mobile) -->
+  <div class="siggy-bubble" data-siggy-bubble>
+    <div class="siggy-bubble__msg" data-siggy-bubble-msg>Hi! I am Siggy, your signing coach.</div>
+    <button class="siggy-bubble__btn" data-siggy-bubble-btn aria-label="Toggle Siggy coaching message">
+      <span class="siggy-art" data-siggy-art-bubble></span>
+    </button>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

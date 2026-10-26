@@ -1,0 +1,10 @@
+# Deployment / local tooling
+.vercel/
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Local environment files
+.env
+.env.*
+!.env.example

@@ -1,0 +1,62 @@
+/* ============================================================
+   SIGNA — tokens.css
+   ALL CSS custom properties. Dark mode is the default.
+   Light overrides live in theme.css under [data-theme="light"].
+   ============================================================ */
+:root {
+  /* Brand accents (same in both modes) */
+  --accent: #7C3AED;
+  --accent-hover: #6D28D9;
+  --accent-2: #14B8A6;
+  --glow: rgba(124, 58, 237, 0.19);
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --accent-soft: rgba(124, 58, 237, 0.14);
+  --accent-border: rgba(124, 58, 237, 0.35);
+  --success-soft: rgba(16, 185, 129, 0.15);
+  --warning-soft: rgba(245, 158, 11, 0.15);
+  --error-soft: rgba(239, 68, 68, 0.14);
+  --teal-soft: rgba(20, 184, 166, 0.14);
+
+  /* Dark mode surfaces (default) */
+  --bg: #0A0F1E;
+  --surface: #111827;
+  --surface-elevated: #1A2235;
+  --border: #1E2D45;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --toggle-bg: #1A2235;
+  --toggle-border: rgba(124, 58, 237, 0.4);
+  --camera-bg: #05080F;
+  --dot: rgba(148, 163, 184, 0.07);
+
+  /* Typography */
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 20px;  --space-6: 24px;
+  --space-8: 32px; --space-12: 48px; --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 8px;   --radius-md: 12px;  --radius-lg: 16px;
+  --radius-xl: 20px;  --radius-2xl: 24px; --radius-full: 999px;
+
+  /* Motion — nothing over 800ms */
+  --ease-out: cubic-bezier(0.22, 0.9, 0.3, 1);
+  --ease-inout: ease-in-out;
+  --dur-fast: 120ms; --dur: 220ms; --dur-slow: 600ms;
+
+  /* Layout */
+  --topbar-h: 62px;
+  --sidebar-w: 264px;
+  --siggy-w: 284px;
+  --bottomnav-h: 64px;
+  --content-max: 1240px;
+}
