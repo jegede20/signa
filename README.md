@@ -81,7 +81,7 @@ signa/
 `svg/` assets are generated from the app's own renderers (so they cannot drift):
 
 ```bash
-node generate-assets.mjs   # from the repo root (dev helper, not shipped)
+node generate-assets.mjs   # from the repo root
 ```
 
 ## Tech

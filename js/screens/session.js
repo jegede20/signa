@@ -98,7 +98,7 @@ export function createPracticeSession({
 
     <div class="card" style="margin-top:16px;padding:20px">
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
-        ${store.settings.showScoreRing ? `<div style="display:grid;justify-items:center;gap:8px">${scoreRingHTML()}<span class="text-small text-secondary">Best: <strong class="text-mono" data-best>0%</strong></span></div>` : `<div style="display:grid;gap:2px"><span class="text-stat" data-best-num>0%</span><span class="text-label">Best score</span></div>`}
+        ${store.settings.showScoreRing ? `<div style="display:grid;justify-items:center;gap:8px">${scoreRingHTML()}<span class="text-small text-secondary">Best: <strong class="text-mono" data-best>0%</strong></span></div>` : `<div style="display:grid;gap:2px"><span class="text-stat" data-current-num>0%</span><span class="text-label">Live score</span><span class="text-small text-secondary" style="margin-top:8px">Best: <strong class="text-mono" data-best-num>0%</strong></span></div>`}
         <div style="flex:1;min-width:250px;display:grid;gap:14px">
           <div class="feedback-bar" data-feedback role="status" aria-live="polite">${icon("lightbulb")}<span data-tip>Enable your camera (or the simulator), then copy the guide's handshape.</span></div>
           <div data-meters style="display:grid;gap:8px" ${store.settings.verbosity === "simple" ? "hidden" : ""}></div>
@@ -150,7 +150,7 @@ export function createPracticeSession({
   const ringRoot = $("[data-ring]", mount) || mount;
 
   let stream = null, raf = 0, destroyed = false, source = "none"; // none|camera|simulator
-  let lastTs = 0, lastVideoTime = -1, frameCount = 0;
+  let lastTs = 0, lastVideoTime = -1, frameCount = 0, lastBright = 120;
   let displayed = 0, best = 0, bestResult = null;
   let lastTipText = "", lastTipAt = 0, lastMood = "";
   let demo = null;
@@ -185,6 +185,7 @@ export function createPracticeSession({
     if (!result) {
       displayed = lerp(displayed, 0, 0.12);
       paintScoreRing(ringRoot, displayed);
+      const cur0 = $("[data-current-num]", mount); if (cur0) cur0.textContent = `${Math.round(displayed)}%`;
       if (now - lastTipAt > 600) { setTip("Show your hand to the camera, palm facing it, fingers in view.", "fix"); }
       setMoodThrottled("neutral", "Show me your hand and I will coach you.");
       setPill(bright < 35 ? "Low light — face a lamp or window" : "No hand detected", { warn: true });
@@ -197,6 +198,7 @@ export function createPracticeSession({
     displayed = source === "simulator" ? result.total : lerp(displayed, result.total, 0.4);
     if (Math.abs(displayed - result.total) < 1) displayed = result.total;
     paintScoreRing(ringRoot, displayed);
+    const curEl = $("[data-current-num]", mount); if (curEl) curEl.textContent = `${Math.round(displayed)}%`;
     const bestEl = $("[data-best]", mount); if (bestEl) bestEl.textContent = `${best}%`;
     const bestNum = $("[data-best-num]", mount); if (bestNum) bestNum.textContent = `${best}%`;
     submitBtn.disabled = false;
@@ -254,6 +256,7 @@ export function createPracticeSession({
       if (destroyed) return;
       source = "camera";
       placeholder.hidden = true;
+      if (allowBtn) { allowBtn.classList.remove("is-loading"); allowBtn.innerHTML = `${icon("camera")} Allow Camera`; }
       $("[data-switch]", mount).hidden = false;
       statusEl.textContent = "Tracking runs locally on your device.";
       lastVideoTime = -1; lastTs = 0;
@@ -279,7 +282,8 @@ export function createPracticeSession({
     lastTs = ts;
     const det = detectHands(video, ts);
     frameCount++;
-    const bright = frameCount % 45 === 0 ? estimateBrightness(video) : 120;
+    if (frameCount % 45 === 0) lastBright = estimateBrightness(video);
+    const bright = lastBright;
     if (!det) {
       // keep last skeleton frozen briefly? clear for honesty
       const ctx = canvas.getContext("2d"); ctx && ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -319,6 +323,21 @@ export function createPracticeSession({
   }
   function runSim() { source = "simulator"; applyResult(scoreFeatures(simFeatures(), sign), {}); }
   function openSim() {
+    // Clean hand-off: if the camera is live, fully stop it so the session
+    // has exactly one input source and the camera light turns off.
+    if (stream) {
+      cancelAnimationFrame(raf);
+      stopCamera(stream);
+      stream = null;
+      placeholder.hidden = false;
+      const switchBtn = $("[data-switch]", mount);
+      if (switchBtn) switchBtn.hidden = true;
+      const statusEl = $("[data-cam-status]", mount);
+      if (statusEl) statusEl.textContent = "Simulator in use — Allow Camera switches back to live tracking.";
+      const ctx = canvas.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+      setPill("Simulator live", { on: true });
+    }
     simPanel.hidden = false;
     simPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     runSim();
